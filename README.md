@@ -3,11 +3,11 @@
 
 # Demo
 移動平均をとった脈波波形
-![img0](file:///E:\デスクトップ\1EM\特別研究\画像\予備実験結果\r-relax_0215\PalseWave(SMA).png)
+![FFT_Result(30)](https://user-images.githubusercontent.com/59692525/108624282-6216cb00-7487-11eb-901f-050008fbce45.png)
 瞬時心拍数波形
-![img1](file:///E:\デスクトップ\1EM\特別研究\画像\予備実験結果\r-relax_0215\HLTV(30).png)
+![HLTV(30)](https://user-images.githubusercontent.com/59692525/108624286-6642e880-7487-11eb-993b-5557ecd4f1bd.png)
 FFTによる解析結果
-![img2](file:///E:\デスクトップ\1EM\特別研究\画像\予備実験結果\r-relax_0215\FFT_Result(30).png)
+![PalseWave(SMA)](https://user-images.githubusercontent.com/59692525/108624288-680cac00-7487-11eb-8482-0ec9336646ac.png)
 
 # Feature
 解析したい脈波データのファイル名を入力すると，心拍変動解析を行う．  
