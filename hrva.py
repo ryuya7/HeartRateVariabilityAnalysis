@@ -1,3 +1,4 @@
+import os
 import csv
 import numpy as np
 import pandas as pd
@@ -55,6 +56,7 @@ skip_list = []
 for i in range(pat):
     print("\n%dパターン目" % (i+1))
     skip_list += [int(input())]
+print()
 
 #ピーク点を検出する関数
 def Peak_Det(skip):
@@ -91,6 +93,23 @@ ihr_list = []
 for i in range(pat):
     Calc_PTandHR(i)
 
+dirpath = ""
+
+#画像を保存するか聞く関数
+def WantSave(str):
+    global dirpath
+    print("保存しますか？→ %s" % str)
+    YorN = input("y/n:")
+    print()
+    if YorN == "y":
+        dirpath = "e:\デスクトップ\\1em\特別研究\画像\\%s" % FilePath2
+        os.makedirs(dirpath, exist_ok=True)
+        SaveFigure(str)
+
+#画像を保存するときに呼ぶ関数
+def SaveFigure(str):
+    plt.savefig(os.path.join(dirpath, str))
+
 #移動平均処理後の脈波波形と瞬時心拍数の時間変化波形を表示する関数
 def Plt_PWandHR(patt):
     plt.figure(dpi=100, figsize=(16, 9))
@@ -98,16 +117,16 @@ def Plt_PWandHR(patt):
     plt.xlabel("Time[s]")
     plt.ylabel("Freq")
     plt.plot(PW_Time, PW)
-    #移動平均処理後の脈波波形を保存するコード
-    #plt.savefig("PalseWave(SMA).png")
+    SaveFigureName = "PalseWave(SMA).png"
+    WantSave(SaveFigureName)
     for i in range(patt):
         plt.figure(dpi=100, figsize=(16, 9))
         plt.title("HeartLate-TimeVariation(Skip:%d)" % skip_list[i])
         plt.xlabel("Time[s]")
         plt.ylabel("HeartLate[bpm]")
         plt.plot(Peak_Time_list[i], ihr_list[i])
-        #瞬時心拍数波形を保存するコード
-        #plt.savefig("HLTV(%d).png" % skip_list[i])
+        SaveFigureName = "HLTV(%d).png" % skip_list[i]
+        WantSave(SaveFigureName)
 
 #それぞれ，最初のピーク点の出現時間が0になるよう調整
 bias = min(Peak_Time_list[0])
@@ -159,8 +178,8 @@ def Plt_PS(patt):
         plt.xlim([0,1])
         plt.xlabel("Frequency[Hz]")
         plt.bar(Freq_list[i], FFT_abs_list[i], width=1/300)
-        #FFT画像を保存するコード
-        #plt.savefig("FFT_Result(%d).png" % skip_list[i])
+        SaveFigureName = "FFT_Result(%d).png" % skip_list[i]
+        WantSave(SaveFigureName)
 
 #それぞれのLFとHFを計算
 #0.00333...Hz区切りでデータが出ているので，
