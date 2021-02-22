@@ -113,6 +113,7 @@ def SaveFigure(str):
 #移動平均処理後の脈波波形と瞬時心拍数の時間変化波形を表示する関数
 def Plt_PWandHR(patt):
     plt.figure(dpi=100, figsize=(16, 9))
+    plt.rcParams["font.size"] = 30
     plt.title("PalseWave(SMA)")
     plt.xlabel("Time[s]")
     plt.ylabel("Freq")
