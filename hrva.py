@@ -114,7 +114,7 @@ def SaveFigure(str):
 def Plt_PWandHR(patt):
     plt.figure(dpi=100, figsize=(16, 9))
     plt.rcParams["font.size"] = 30
-    plt.title("PalseWave(SMA)")
+    #plt.title("PalseWave(SMA)")
     plt.xlabel("Time[s]")
     plt.ylabel("Freq")
     plt.plot(PW_Time, PW)
@@ -122,9 +122,9 @@ def Plt_PWandHR(patt):
     WantSave(SaveFigureName)
     for i in range(patt):
         plt.figure(dpi=100, figsize=(16, 9))
-        plt.title("HeartLate-TimeVariation(Skip:%d)" % skip_list[i])
+        #plt.title("HeartRate-TimeVariation(Skip:%d)" % skip_list[i])
         plt.xlabel("Time[s]")
-        plt.ylabel("HeartLate[bpm]")
+        plt.ylabel("HeartRate[bpm]")
         plt.plot(Peak_Time_list[i], ihr_list[i])
         SaveFigureName = "HLTV(%d).png" % skip_list[i]
         WantSave(SaveFigureName)
@@ -173,7 +173,7 @@ for i in range(pat):
 def Plt_PS(patt):
     for i in range(patt):
         plt.figure(dpi=100, figsize=(16, 9))
-        plt.title("FFT(skip:%d)" % skip_list[i])
+        #plt.title("FFT(skip:%d)" % skip_list[i])
         plt.tick_params(labelleft=False)
         plt.tick_params(left=False)
         plt.xlim([0,1])
